@@ -1,0 +1,21 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+    {% if category == 'no_category' %}
+        <h2>No Category Listed</h2>
+    {% else %}
+        <h2>{{ category }}</h2>
+    {% endif %}
+
+    <ul class="list-group list-group-flush">    
+        {% for listing in category_list %}
+            {% if listing.active %}
+                <li class="list-group-item">
+                    <a href="{% url 'listing_page' listing.id %}">{{ listing.title }}</a>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+{% endblock %}

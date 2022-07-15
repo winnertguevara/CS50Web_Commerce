@@ -1,0 +1,38 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'error' %}
+                <div class='alert alert-warning'>{{ message }}</div>
+            {% elif message.tags == 'success' %}
+                <div class='alert alert-success'>{{ message }}</div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+<h1>Watchlist</h1>
+{% for listing in watchlist %}
+    <div id="item-container">
+        <div class="row">
+            <div id="index-image">
+                {% if listing.image != "" %}
+                    <img src="{{ listing.image.url }}" width = 300px height= 200px>
+                {% endif %}
+            </div>
+            <div class="col">
+                <h4><a href= "{% url 'listing_page' listing.id %}" class="item-link">{{ listing.title }}</a></h4>
+                <h6>Price: ${{ listing.price }}</h6>
+                <p class="font-weight-light">{{ listing.description }}</p>
+            </div>
+            <form class="col">
+                <a href="{% url 'remove_watchlist' listing.id %}" class="close">
+                <span aria-hidden="true">&times;</span>
+                </a>
+            </form>
+        </div>
+    </div>
+{% endfor %}
+
+{% endblock %}

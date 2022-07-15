@@ -1,0 +1,37 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'error' %}
+                <div class='alert alert-warning'>{{ message }}</div>
+            {% elif message.tags == 'success' %}
+                <div class='alert alert-success'>{{ message }}</div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+
+    <h2> Active Listings </h2>
+
+    {% for listing in listings_list %}
+        {% if listing.active %}
+            <div id="item-container">
+                <div class="row">
+                    <div id="index-image">
+                        {% if listing.image != "" %}
+                            <img src="{{ listing.image.url }}" width = 300px height= 200px>
+                        {% endif %}
+                    </div>
+                    <div class="col">
+                        <h4><a href= "{% url 'listing_page' listing.id %}" class="item-link">{{ listing.title }}</a></h4>
+                        <h6>Price: ${{ listing.price }}</h6>
+                        <p class="font-weight-light">{{ listing.description }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,41 @@
+body {
+    padding: 10px;
+}
+
+form label{
+    text-align: left;
+}
+
+.item-link {
+    color: black;
+}
+
+.listing-text, h2 {
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+#item-container {
+    margin: 15px;
+    padding: 10px;
+    border-style: solid;
+    border-color: #f2f0f0;
+    border-width: 1px;
+}
+
+#index-image {
+    margin: 0px 40px 0px 50px;
+    width: 300px;
+}
+
+#item-image {
+    margin: 10px;
+    width: 450px;
+    height: 300px;
+
+}
+
+#text-comment {
+    width: 600px;
+    margin: 5px;
+}
